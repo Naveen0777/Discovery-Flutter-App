@@ -13,9 +13,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Discovery App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      // theme: ThemeData(
+      //   primarySwatch: Colors.black,
+      // ),
       home: DiscoveryPage(),
     );
   }
@@ -154,6 +154,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Discovery"),
+        backgroundColor: Colors.black54,
       ),
       body: Padding(
     padding: EdgeInsets.all(10.0),
@@ -176,10 +177,11 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                     onTap: () {
                       _navigateToUserDetail(items[index]);
                     },
-                    child: 
-                    AnimatedOpacity(
-                      duration: Duration(milliseconds: 500),
-                      opacity: isLoading ? 0.0 : 1.0,
+                    child: Hero(
+                      tag: 'cards',
+                    // AnimatedOpacity(
+                    //   duration: Duration(milliseconds: 500),
+                    //   opacity: isLoading ? 0.0 : 1.0,
                       child:Card(
                       elevation: 2.0,
                       shape: RoundedRectangleBorder(
@@ -241,7 +243,7 @@ class _DiscoveryPageState extends State<DiscoveryPage> {
                       );
                     } else {
                       // This indicates that more items are being loaded
-                      // but the loading indicator is not required.
+                      
                       return SizedBox.shrink();
                     }
                   }
